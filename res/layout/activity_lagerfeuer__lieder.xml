@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <ImageView 
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="250dp"
+        android:src="@drawable/guitar_1"
+        android:id="@+id/guitar"/>
+    
+    
+    <ImageView 
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/feuer"
+        android:contentDescription="@drawable/feuer"
+        android:id="@+id/feuer"/>
+    
+    <View
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/feuer"
+        android:layout_centerInParent="true"
+        android:id="@+id/trenn"
+    />
+        
+    
+    <ImageButton 
+        android:layout_width="100dp" 
+        android:layout_height="100dp"
+        android:src="@drawable/navlyrics"
+        android:layout_alignTop="@id/trenn"
+        android:layout_toLeftOf="@id/trenn"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@drawable/navlyrics"
+        android:id="@+id/navlyrics"
+        />
+    
+    <ImageButton 
+        android:layout_width="100dp" 
+        android:layout_height="100dp"
+        android:src="@drawable/navmusic"
+        android:layout_below="@id/navlyrics"
+        android:layout_alignLeft="@id/navlyrics"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@drawable/navmusic"
+        android:id="@+id/navmusic"
+        />
+    
+    <ImageButton 
+        android:layout_width="100dp" 
+        android:layout_height="100dp"
+        android:src="@drawable/navtune"
+        android:layout_toRightOf="@id/trenn"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@id/navlyrics"
+        android:contentDescription="@drawable/navtune"
+        android:id="@+id/navtune"
+        />
+    
+     <ImageButton 
+        android:layout_width="100dp" 
+        android:layout_height="100dp"
+        android:src="@drawable/navchords"
+        android:layout_below="@id/navtune"
+        android:layout_alignLeft="@id/navtune"
+        android:layout_alignTop="@id/navmusic"
+        android:contentDescription="@drawable/navchords"
+        android:id="@+id/navchords"
+        />
+    
+    
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">LagerfeuerLieder</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_lagerfeuer__lieder">Lagerfeuer_Lieder</string>
+	<string name="Lagerfeuer">Lagerfeuer Lieder</string>
+	<string name="Tuner">Tuner</string>
+</resources>

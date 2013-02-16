@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <ImageButton 
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="0dp"
+        android:contentDescription="back"
+        android:id="@+id/back"
+        android:background="@drawable/back"
+        android:text="@string/Lagerfeuer"/>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignTop="@id/back"
+        android:layout_toRightOf="@id/back"
+        android:background="@drawable/back2"
+        
+        android:contentDescription="back2"/>
+    
+    <TextView 
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_alignTop="@id/back"
+        android:layout_alignLeft="@id/back"
+        android:text="@string/Lagerfeuer"
+        android:textColor="#b4b4b4"
+        android:textSize="12dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back"
+        android:id="@+id/lyricsView"
+        android:text="@string/Lagerfeuer"
+        />
+    
+</RelativeLayout>
