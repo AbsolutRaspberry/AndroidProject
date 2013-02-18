@@ -20,7 +20,7 @@ public class Lagerfeuer_Lieder extends Activity {
 	ImageButton navMusic;
 	ImageButton navChords;
 	ImageView guitar;
-	Button x;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
