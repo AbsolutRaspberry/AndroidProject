@@ -3,7 +3,7 @@ package de.lichtenberger.gottschalk.android;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +20,10 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class Lyrics extends Activity {
-
+public class Lyrics extends ListActivity {
+	
+	
+	
 	ImageButton back;
 	ListView songList;
 	TextView textAnzeige;
@@ -32,7 +34,7 @@ public class Lyrics extends Activity {
 		
 	
 	 @Override
-	    public void onCreate(Bundle savedInstanceState) {
+	   public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_lyrics);
 	        
@@ -46,9 +48,6 @@ public class Lyrics extends Activity {
 	        
 	    }
 
-
-
-
 	private void initDataToView() {
 		
 		
@@ -57,9 +56,6 @@ public class Lyrics extends Activity {
 		songList.setAdapter(aa);
 		aa.notifyDataSetChanged();
 	}
-
-
-
 
 	private void getSongs() {
 		ParseQuery pq = new ParseQuery("SongDatenbank");
@@ -95,10 +91,7 @@ public class Lyrics extends Activity {
 		
 		
 	}
-
-	
-	 
-	 
+		 	 
 	private void setupOnClickListeners() {
 		
 		back.setOnClickListener(new OnClickListener() {
@@ -119,4 +112,7 @@ public class Lyrics extends Activity {
 		textAnzeige = (TextView)findViewById(R.id.lyricsView);
 				
 	}	
+
+
+	
 }
