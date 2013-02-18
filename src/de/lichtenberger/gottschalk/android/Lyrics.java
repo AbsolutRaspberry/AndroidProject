@@ -1,11 +1,13 @@
 package de.lichtenberger.gottschalk.android;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -24,8 +26,9 @@ public class Lyrics extends Activity {
 	ImageButton back;
 	ListView songList;
 	TextView textAnzeige;
-	private ArrayList<String> Titelliste;
+	private ArrayList<String> Titelliste = new ArrayList<String>();
 	private ArrayAdapter<String> aa;
+	
 	
 		
 	
@@ -38,9 +41,9 @@ public class Lyrics extends Activity {
 	        	        	      
 	        setupUI();
 	        setupOnClickListeners();
-	       	     	        
+	           	        
 	        getSongs();
-	        initDataToView();  
+	          
 	        
 	    }
 
@@ -48,9 +51,12 @@ public class Lyrics extends Activity {
 
 
 	private void initDataToView() {
+		
+		
 		aa = new ArrayAdapter<String>(Lyrics.this, android.R.layout.simple_list_item_1, Titelliste);
 		songList = (ListView)findViewById(R.id.SongView);
 		songList.setAdapter(aa);
+		aa.notifyDataSetChanged();
 	}
 
 
@@ -58,31 +64,37 @@ public class Lyrics extends Activity {
 
 	private void getSongs() {
 		ParseQuery pq = new ParseQuery("SongDatenbank");
-		
-		pq.whereExists("SessionID");
-      
+		pq.whereExists("Titel");
 		pq.findInBackground(new FindCallback() {
 			
 			@Override
-			public void done(List<ParseObject> objects, ParseException e) {
-				if (e==null){
+			public void done(List<ParseObject> liederListe, ParseException e) {
+				if(e==null){
+					Log.d("Parse", "Objektliste empfangen");
 					
+						ParseObject x;
 					
-					
-					for(int i = 0; i<objects.size();i++){
-						Object object = objects.get(i);
-						String titel = ((ParseObject)object).getString("Titel").toString();
-						Titelliste.add(titel);
-						
+					for(int i=0;i<liederListe.size();i++){
+						x = liederListe.get(i);
+						Titelliste.add(x.getString("Titel"));
+							
 					}
-					aa.setNotifyOnChange(true);
-					songList.setAdapter(aa);
-				}
-				else {
+					initDataToView(); 
 					
+					x = liederListe.get(0);
+					
+					Log.d("Parse", x.getString("Titel"));
+					
+					
+				}else{
+					
+					Log.d("Parse", "Objektliste nicht empfangen");
 				}
 			}
 		});
+		
+		
+		
 	}
 
 	
