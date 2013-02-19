@@ -26,23 +26,23 @@ public final class R {
         public static final int navlyrics=0x7f02000c;
         public static final int navmusic=0x7f02000d;
         public static final int navtune=0x7f02000e;
+        public static final int nopic=0x7f02000f;
     }
     public static final class id {
-        public static final int SongView=0x7f070008;
-        public static final int artist=0x7f07000d;
+        public static final int artist=0x7f07000c;
         public static final int back=0x7f070000;
-        public static final int duration=0x7f07000e;
+        public static final int duration=0x7f07000d;
         public static final int feuer=0x7f070002;
         public static final int guitar=0x7f070001;
-        public static final int list_image=0x7f07000b;
-        public static final int lyricsView=0x7f070009;
-        public static final int menu_settings=0x7f07000f;
+        public static final int list_image=0x7f07000a;
+        public static final int lyricsView=0x7f070008;
+        public static final int menu_settings=0x7f07000e;
         public static final int navchords=0x7f070007;
         public static final int navlyrics=0x7f070004;
         public static final int navmusic=0x7f070005;
         public static final int navtune=0x7f070006;
-        public static final int thumbnail=0x7f07000a;
-        public static final int title=0x7f07000c;
+        public static final int thumbnail=0x7f070009;
+        public static final int title=0x7f07000b;
         public static final int trenn=0x7f070003;
     }
     public static final class layout {
@@ -59,9 +59,11 @@ public final class R {
     }
     public static final class string {
         public static final int Lagerfeuer=0x7f040004;
+        public static final int Songauswahl=0x7f040007;
         public static final int Tuner=0x7f040005;
         public static final int app_name=0x7f040000;
         public static final int hello_world=0x7f040001;
+        public static final int main=0x7f040006;
         public static final int menu_settings=0x7f040002;
         public static final int title_activity_lagerfeuer__lieder=0x7f040003;
     }

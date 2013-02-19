@@ -24,6 +24,8 @@
         
         android:contentDescription="back2"/>
     
+   
+    
    <ListView
         android:layout_below="@id/back"
         android:layout_width="fill_parent"
@@ -31,7 +33,6 @@
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector"
-       	android:id="@+id/SongView"
+       	android:id="@android:id/list"
        	/>
-
-       	</RelativeLayout>
+</RelativeLayout>

@@ -1,5 +1,7 @@
 package de.lichtenberger.gottschalk.android;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +12,17 @@ import android.widget.TextView;
 
 public class SongAdapter extends ArrayAdapter<String> {
 	 private final Context context;
-	 private final String[] values;
+	 private final ArrayList<String> valuesTitel;
+	 private final ArrayList<String> valuesInterpret;
+	 private final ArrayList<String> valuesDauer;
+	 
 
-	  public SongAdapter(Context context, String[] values) {
-	    super(context, R.layout.list_row, values);
+	  public SongAdapter(Context context, ArrayList<String> valuesTitel, ArrayList<String> valuesInterpret, ArrayList<String> valuesDauer) {
+	    super(context, R.layout.list_row);
 	    this.context = context;
-	    this.values = values;
+	    this.valuesTitel = valuesTitel;
+	    this.valuesInterpret = valuesInterpret;
+	    this.valuesDauer = valuesDauer;
 	  }
 
 	  @Override
@@ -29,8 +36,13 @@ public class SongAdapter extends ArrayAdapter<String> {
 		  TextView artistText = (TextView)rowView.findViewById(R.id.artist);
 		  TextView duration = (TextView)rowView.findViewById(R.id.duration);
 		  
+		 
 		  
+		  titelText.setText(valuesTitel.get(position));
+		  artistText.setText(valuesInterpret.get(position));
+		  duration.setText(valuesDauer.get(position));
 		  
+		  return rowView;
 		  
 		  
 		  
