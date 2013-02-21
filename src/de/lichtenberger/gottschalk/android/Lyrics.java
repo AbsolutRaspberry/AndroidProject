@@ -6,11 +6,13 @@ import java.util.List;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -20,9 +22,9 @@ import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
 
 public class Lyrics extends ListActivity {
 	
@@ -34,7 +36,8 @@ public class Lyrics extends ListActivity {
 	private ArrayList<String> Titelliste = new ArrayList<String>();
 	private ArrayList<String> Interpretliste = new ArrayList<String>();
 	private ArrayList<String> Dauerliste = new ArrayList<String>();
-	
+	private ArrayAdapter<String> aa;
+	private SongAdapter sA;
 	ProgressDialog dialog;
 	
 		
@@ -46,18 +49,18 @@ public class Lyrics extends ListActivity {
 	        
 	        Parse.initialize(this, "hGxasGU6e0WQAOh5JIOGDfvFBKrYyBJKXIzxBfAG", "WsOPsXerpsFjsjekKKbZnnjAHvXy5PQHVQEB8Cqu");
 	        	        	      
-	        
+	        setupUI();
+	        setupOnClickListeners();
 	           	        
-	       
-	        initDataToView();
-	       
+	        new getData().execute();
+	          
 	        
 	    }
 
 	private void initDataToView() {
 		
 		
-		new getData().execute();
+		sA = new SongAdapter(Lyrics.this, Titelliste, Interpretliste, Dauerliste);
 		songList = (ListView)findViewById(android.R.id.list);
 		
 	}
@@ -72,21 +75,16 @@ public class Lyrics extends ListActivity {
 	        dialog.setIndeterminate(true);
 	        dialog.setCancelable(false);
 	        dialog.show();
-	        Log.d("Parse", "PreExecute");
 	    }
 		
 		@Override
 		protected SongAdapter doInBackground(Void... params) {
-			
-			
-			
 			ParseQuery pq = new ParseQuery("SongDatenbank");
 			pq.whereExists("Titel");
 			pq.findInBackground(new FindCallback() {
-
+				
 				@Override
-				public void done(List<ParseObject> liederListe,
-						com.parse.ParseException e) {
+				public void done(List<ParseObject> liederListe, ParseException e) {
 					if(e==null){
 						Log.d("Parse", "Objektliste empfangen");
 						
@@ -98,13 +96,11 @@ public class Lyrics extends ListActivity {
 							Dauerliste.add(x.getString("Dauer"));
 							Interpretliste.add(x.getString("Interpret"));
 						}
-						 
+						initDataToView(); 
 						
 						x = liederListe.get(0);
 						
 						Log.d("Parse", x.getString("Titel"));
-						Log.d("Parse", x.getString("Dauer"));
-						Log.d("Parse", x.getString("Interpret"));
 						
 						
 					}else{
@@ -112,21 +108,14 @@ public class Lyrics extends ListActivity {
 						Log.d("Parse", "Objektliste nicht empfangen");
 					}
 				}
-				
-				
 			});
-			
-			SongAdapter adapter1 = new SongAdapter(Lyrics.this, Titelliste, Interpretliste, Dauerliste);
-			
-			return adapter1;
+			return null;
 		}
 		
 		protected void onPostExecute(SongAdapter result) {
-	        
-			songList.setAdapter(result);
-			
+	        sA = result;
+			songList.setAdapter(sA);
 	        dialog.dismiss();
-	        Log.d("Parse", "Postexecute");
 	    }
 		
 		
@@ -134,9 +123,30 @@ public class Lyrics extends ListActivity {
 	
 
 		 	 
+	private void setupOnClickListeners() {
+		
+		back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent back = new Intent(Lyrics.this, Lagerfeuer_Lieder.class);
+				startActivity(back);
+				
+			}
+		});
+	}
 
+	private void setupUI() {
+		
+		
+		back = (ImageButton)findViewById(R.id.back);
+		
+		textAnzeige = (TextView)findViewById(R.id.lyricsView);
+				
+	}	
 
-	public class SongAdapter extends ArrayAdapter<String> {
+	private class SongAdapter extends ArrayAdapter<String> {
 		 private final Context context;
 		 private final ArrayList<String> valuesTitel;
 		 private final ArrayList<String> valuesInterpret;
@@ -151,34 +161,32 @@ public class Lyrics extends ListActivity {
 		    this.valuesDauer = valuesDauer;
 		  }
 
-		  	
+		  @Override
 		  
 		  public View getView(int position, View convertView, ViewGroup parent){
 			  LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			  
-			  View list_row = inflater.inflate(R.layout.list_row, parent, false);
-			  ImageView imageView = (ImageView)list_row.findViewById(R.id.list_image);
-			  TextView titelText = (TextView)list_row.findViewById(R.id.title);
-			  TextView artistText = (TextView)list_row.findViewById(R.id.artist);
-			  TextView duration = (TextView)list_row.findViewById(R.id.duration);
+			  View rowView = inflater.inflate(R.layout.list_row, parent, false);
+			  ImageView imageView = (ImageView)rowView.findViewById(R.id.list_image);
+			  TextView titelText = (TextView)rowView.findViewById(R.id.title);
+			  TextView artistText = (TextView)rowView.findViewById(R.id.artist);
+			  TextView duration = (TextView)rowView.findViewById(R.id.duration);
 			  
 			 
 			  
 			  titelText.setText(valuesTitel.get(position));
 			  artistText.setText(valuesInterpret.get(position));
 			  duration.setText(valuesDauer.get(position));
-			  Log.d("Parse", valuesTitel.get(position));
-			  return list_row;
+			  
+			  return rowView;
 			  
 			  
 			  
 		  }
-		  }
+		  
+
+	}
+
 	
 	
-
-
-
-
-
 }
