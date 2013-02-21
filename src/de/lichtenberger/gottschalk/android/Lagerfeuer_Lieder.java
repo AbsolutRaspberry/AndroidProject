@@ -20,7 +20,7 @@ public class Lagerfeuer_Lieder extends Activity {
 	ImageButton navMusic;
 	ImageButton navChords;
 	ImageView guitar;
-	Button test;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class Lagerfeuer_Lieder extends Activity {
 			public void onClick(View v) {
 				
 				Intent navToLyrics = new Intent(Lagerfeuer_Lieder.this, Lyrics.class);
+				navToLyrics.putExtra("BackButton", R.string.main);
 				startActivity(navToLyrics);
 				
 				

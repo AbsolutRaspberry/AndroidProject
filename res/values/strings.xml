@@ -6,4 +6,7 @@
     <string name="title_activity_lagerfeuer__lieder">Lagerfeuer_Lieder</string>
 	<string name="Lagerfeuer">Lagerfeuer Lieder</string>
 	<string name="Tuner">Tuner</string>
+	<string name="main">Hauptmenü</string>
+	<string name="Songauswahl">Songauswahl</string>
+	<string name="Wahl">Bitte Wählen!</string>
 </resources>

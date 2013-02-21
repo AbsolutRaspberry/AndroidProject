@@ -17,7 +17,7 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         
         <activity
-            android:name=".Lagerfeuer_Lieder"
+            android:name=".Start"
             android:label="@string/title_activity_lagerfeuer__lieder" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+        <activity android:name=".Lagerfeuer_Lieder"></activity>
         <activity android:name=".Lyrics"></activity>
         <activity android:name=".Tune"></activity>
         <activity android:name=".Music"></activity>

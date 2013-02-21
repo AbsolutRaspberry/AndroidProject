@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    
+   	<TextView 
+   	    android:layout_height="wrap_content"
+   	    android:layout_width="wrap_content"
+   	    android:layout_alignParentTop="true"
+   	    android:text="@string/Wahl"
+   	    android:layout_centerHorizontal="true"
+   	    android:layout_marginTop="40dp"
+   	    android:textSize="40dp"
+   	    android:textColor="#87907c"
+   	    android:id="@+id/wahl"
+   	    />
+   	
+   	<View 
+   	    android:layout_height="fill_parent"
+   	    android:layout_width="1dp"
+   	    android:background="@android:color/transparent"
+   	    android:layout_centerHorizontal="true"
+   	    android:id="@+id/trenn"
+   	    android:layout_below="@id/wahl"/>
+   	
+   	
+   	<ImageButton 
+   	    android:layout_height="150dp"
+   	    android:layout_width="150dp"
+   	    android:layout_toLeftOf="@id/trenn"
+   	    android:background="@drawable/gitarrebutton"
+   	    android:layout_below="@id/wahl"
+   	    android:layout_marginTop="60dp"
+   	    android:layout_marginRight="5dp"
+   	    android:contentDescription="@string/Lagerfeuer"
+   	    
+   	    />
+   
+   		<ImageButton 
+   	    android:layout_height="150dp"
+   	    android:layout_width="150dp"
+   	    android:layout_toRightOf="@id/trenn"
+   	    android:background="@drawable/ohr"
+   	    android:layout_below="@id/wahl"
+   	    android:layout_marginTop="60dp"
+   	    android:layout_marginLeft="5dp"
+   	    android:contentDescription="@string/Lagerfeuer"
+   	    
+   	    />
+    
+    
+    
+</RelativeLayout>
